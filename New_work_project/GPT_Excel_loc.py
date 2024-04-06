@@ -70,5 +70,5 @@ print(df)
 data = df.values.tolist()
 data = data[::-1]
 data = pd.DataFrame(data)
-data.to_excel(name, index=False)
+data.to_excel("Data_csv/" + name, index=False)
 #data.to_excel("test_prices.xlsx", index=False)
