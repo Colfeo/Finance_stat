@@ -6,9 +6,9 @@ base_url = 'https://api.kucoin.com'
 i = 0
 
 symbol = "XMR-USDT"
-time = "1day"
-start = datetime(2023, 1, 1, 12, 00)
-end = datetime(2023, 2, 1, 12, 00)
+time = "1hour"
+start = datetime(2023, 12, 1, 12, 00)
+end = datetime(2023, 12, 31, 12, 00)
 name = f"{symbol}_{time}_start={start}_end={end}.xlsx"
 print(name)
 start_timestamp = int(start.timestamp())#1673289720 - (120*60) 
@@ -62,7 +62,7 @@ while(True):
 #df = get_bitcoin_price(start_timestamp, end_timestamp)
 
 # Afficher les premières lignes du dataframe
-print(df)
+
 
 # Enregistrer le dataframe dans un fichier Excel
 #df.to_excel("test_prices.xlsx", index=False)
@@ -70,5 +70,8 @@ print(df)
 data = df.values.tolist()
 data = data[::-1]
 data = pd.DataFrame(data)
+data.columns = ['time', 'open', 'close', 'high', 'low', 'volume', 'turnover']
+
+print(data)
 data.to_excel("Data_csv/" + name, index=False)
 #data.to_excel("test_prices.xlsx", index=False)
